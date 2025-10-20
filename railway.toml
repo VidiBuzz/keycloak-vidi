@@ -1,0 +1,13 @@
+# Railway Configuration for Keycloak
+# Deploy Version: 1.1
+# Date: 2025-10-20
+
+[build]
+# Use Dockerfile for build
+
+[deploy]
+startCommand = "/opt/keycloak/bin/kc.sh start-dev"
+healthcheckPath = "/health/ready"
+healthcheckTimeout = 300
+restartPolicyType = "ON_FAILURE"
+restartPolicyMaxRetries = 10
