@@ -1,23 +1,28 @@
 'use client';
 
-import React, { useEffect, useState } from 'react';
-import DashboardLayout from '../components/DashboardLayout';
+import React, { useEffect, useState, useContext } from 'react';
+import DashboardLayout, { UserContext } from '../components/DashboardLayout';
 import PortalCard from '../components/PortalCard';
-import { getUserRoles } from '../lib/keycloak';
 import { getAccessiblePortals, groupPortalsByCategory, CATEGORY_NAMES, Portal } from '../lib/portals';
 
 export default function HomePage() {
+  const user = useContext(UserContext);
   const [portals, setPortals] = useState<Portal[]>([]);
   const [groupedPortals, setGroupedPortals] = useState<Record<string, Portal[]>>({});
 
   useEffect(() => {
-    const userRoles = getUserRoles();
+    // Wait for user to be loaded
+    if (!user) return;
+
+    const userRoles = user.roles || [];
+    console.log('HomePage: User roles from context:', userRoles);
     const accessiblePortals = getAccessiblePortals(userRoles);
+    console.log('HomePage: Accessible portals:', accessiblePortals.map((p: Portal) => p.name));
     const grouped = groupPortalsByCategory(accessiblePortals);
 
     setPortals(accessiblePortals);
     setGroupedPortals(grouped);
-  }, []);
+  }, [user]);
 
   return (
     <DashboardLayout>
