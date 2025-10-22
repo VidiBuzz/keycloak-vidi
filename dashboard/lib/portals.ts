@@ -28,7 +28,7 @@ export const PORTALS: Portal[] = [
     id: 'referral',
     name: 'Referral Program',
     description: 'Manage affiliate links and track referral commissions',
-    url: 'https://referral.candidstudios.net',
+    url: 'https://earn.candidstudios.net',
     icon: '🤝',
     roles: [], // All authenticated users can access
     category: 'operations',

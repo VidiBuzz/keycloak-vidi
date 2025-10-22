@@ -6,7 +6,7 @@ Complete guide for integrating existing Candid Studios portals with Keycloak SSO
 
 This guide covers integrating:
 1. **analytics.candidstudios.net** - Analytics Dashboard
-2. **referral.candidstudios.net** - Referral/Affiliate Program
+2. **earn.candidstudios.net** - Referral/Affiliate Program
 3. **Future portals** - Vendor, Photographer, Client, Editor
 
 ## Table of Contents
@@ -72,7 +72,7 @@ https://login.candidstudios.net/admin/
 Client ID: referral-portal
 Name: Referral Program
 Valid redirect URIs:
-  https://referral.candidstudios.net/*
+  https://earn.candidstudios.net/*
   http://localhost:3001/*
 ```
 
