@@ -19,6 +19,7 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
       const authenticated = await initKeycloak();
       if (authenticated) {
         const profile = getUserProfile();
+        console.log('DashboardLayout: Setting user profile in context:', profile);
         setUser(profile);
       }
       setLoading(false);
