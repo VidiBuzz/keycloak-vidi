@@ -13,12 +13,15 @@ export default function AdminPage() {
   useEffect(() => {
     const checkAdmin = () => {
       const roles = getUserRoles();
-      setIsAdmin(hasRole('admin'));
+      console.log('AdminPage: User roles:', roles);
+      const isAdminRole = hasRole('admin');
+      console.log('AdminPage: Has admin role:', isAdminRole);
+      setIsAdmin(isAdminRole);
       setLoading(false);
     };
 
-    // Small delay to ensure Keycloak is initialized
-    const timer = setTimeout(checkAdmin, 100);
+    // Increased delay to match HomePage timing
+    const timer = setTimeout(checkAdmin, 500);
     return () => clearTimeout(timer);
   }, []);
 
