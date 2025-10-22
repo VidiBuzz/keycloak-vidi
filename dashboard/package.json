@@ -1,0 +1,20 @@
+{
+  "name": "candid-studios-dashboard",
+  "version": "1.0.0",
+  "description": "Candid Studios Central Portal Hub with Keycloak SSO",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start -p 3001",
+    "lint": "next lint"
+  },
+  "keywords": ["keycloak", "sso", "dashboard"],
+  "author": "Candid Studios",
+  "license": "ISC",
+  "dependencies": {
+    "keycloak-js": "^26.2.1",
+    "next": "^16.0.0",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0"
+  }
+}

@@ -1,9 +1,13 @@
 # Keycloak v26.0.7 for Railway Deployment
-# Deploy Version: 1.0
-# Date: 2025-10-20
+# Deploy Version: 1.1
+# Date: 2025-10-22
 # Purpose: Identity Provider for VidiBlast.net with Google SSO
+# Update: Added Candid Studios custom email theme
 
 FROM quay.io/keycloak/keycloak:26.0.7
+
+# Copy custom email theme for Candid Studios
+COPY themes/candid-studios /opt/keycloak/themes/candid-studios
 
 # Set production environment defaults
 ENV KC_DB=postgres \
