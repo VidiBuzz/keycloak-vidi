@@ -33,6 +33,15 @@ export const PORTALS: Portal[] = [
     roles: [], // All authenticated users can access
     category: 'operations',
   },
+  {
+    id: 'media',
+    name: 'Media Storage',
+    description: 'Upload, organize, and access project media files in R2 storage',
+    url: 'https://media.candidstudios.net',
+    icon: '💾',
+    roles: ['admin', 'photographer', 'videographer', 'editor'],
+    category: 'operations',
+  },
 
   // Future Portals
   {

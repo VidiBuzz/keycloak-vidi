@@ -7,7 +7,8 @@ Complete guide for integrating existing Candid Studios portals with Keycloak SSO
 This guide covers integrating:
 1. **analytics.candidstudios.net** - Analytics Dashboard
 2. **earn.candidstudios.net** - Referral/Affiliate Program
-3. **Future portals** - Vendor, Photographer, Client, Editor
+3. **media.candidstudios.net** - Media Storage (R2 SmartChannel) - ✅ Already integrated
+4. **Future portals** - Vendor, Photographer, Client, Editor
 
 ## Table of Contents
 
@@ -78,14 +79,15 @@ Valid redirect URIs:
 
 ### Step 4: Client Configuration Reference
 
-| Portal | Client ID | URL |
-|--------|-----------|-----|
-| Analytics | analytics-portal | analytics.candidstudios.net |
-| Referral | referral-portal | referral.candidstudios.net |
-| Vendor | vendor-portal | vendor.candidstudios.net |
-| Photographer | photographer-portal | photographer.candidstudios.net |
-| Client | client-portal | client.candidstudios.net |
-| Editor | editor-portal | editor.candidstudios.net |
+| Portal | Client ID | URL | Status |
+|--------|-----------|-----|--------|
+| Analytics | analytics-portal | analytics.candidstudios.net | To integrate |
+| Referral | referral-portal | earn.candidstudios.net | To integrate |
+| Media Storage | smartchannel | media.candidstudios.net | ✅ Integrated |
+| Vendor | vendor-portal | vendor.candidstudios.net | Future |
+| Photographer | photographer-portal | photographer.candidstudios.net | Future |
+| Client | client-portal | client.candidstudios.net | Future |
+| Editor | editor-portal | editor.candidstudios.net | Future |
 
 ---
 
