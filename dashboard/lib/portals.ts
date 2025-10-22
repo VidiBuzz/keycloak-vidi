@@ -72,11 +72,20 @@ export const PORTALS: Portal[] = [
     category: 'operations',
   },
 
-  // Admin Portal
+  // Admin Portals
   {
-    id: 'admin',
-    name: 'Admin Console',
-    description: 'User management, permissions, and system configuration',
+    id: 'user-management',
+    name: 'User Management',
+    description: 'Invite users, assign roles, and manage permissions',
+    url: '/admin',
+    icon: '👥',
+    roles: ['admin'],
+    category: 'admin',
+  },
+  {
+    id: 'keycloak-admin',
+    name: 'Keycloak Console',
+    description: 'Advanced Keycloak configuration and system settings',
     url: 'https://login.candidstudios.net/admin/master/console/#/CandidStudios',
     icon: '⚙️',
     roles: ['admin'],
