@@ -1,7 +1,6 @@
 # Railway Configuration for Keycloak
-# Deploy Version: 1.2
-# Date: 2025-10-22
-# Added: Persistent volume for Keycloak data directory
+# Deploy Version: 1.1
+# Date: 2025-10-20
 
 [build]
 # Use Dockerfile for build
@@ -12,7 +11,3 @@ healthcheckPath = "/health/ready"
 healthcheckTimeout = 300
 restartPolicyType = "ON_FAILURE"
 restartPolicyMaxRetries = 10
-
-[[deploy.volumes]]
-mountPath = "/opt/keycloak/data"
-name = "keycloak-data"
