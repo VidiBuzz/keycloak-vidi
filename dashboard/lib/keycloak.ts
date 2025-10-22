@@ -10,29 +10,52 @@ const keycloakConfig = {
 // Initialize Keycloak instance
 const keycloak = new Keycloak(keycloakConfig);
 
+// Track initialization state
+let isInitialized = false;
+let initPromise: Promise<boolean> | null = null;
+
 /**
  * Initialize Keycloak authentication
  * @returns Promise that resolves to authenticated status
  */
 export const initKeycloak = async (): Promise<boolean> => {
-  try {
-    const authenticated = await keycloak.init({
-      onLoad: 'login-required', // Redirect to login if not authenticated
-      checkLoginIframe: false, // Disable iframe check for better performance
-      pkceMethod: 'S256', // Use PKCE for security
-    });
-
-    if (authenticated) {
-      console.log('User authenticated successfully');
-      console.log('Token:', keycloak.token);
-      console.log('Refresh token:', keycloak.refreshToken);
-    }
-
-    return authenticated;
-  } catch (error) {
-    console.error('Keycloak initialization failed:', error);
-    return false;
+  // If already initialized, return true
+  if (isInitialized) {
+    return keycloak.authenticated || false;
   }
+
+  // If initialization is in progress, return the existing promise
+  if (initPromise) {
+    return initPromise;
+  }
+
+  // Start new initialization
+  initPromise = (async () => {
+    try {
+      const authenticated = await keycloak.init({
+        onLoad: 'login-required', // Redirect to login if not authenticated
+        checkLoginIframe: false, // Disable iframe check for better performance
+        pkceMethod: 'S256', // Use PKCE for security
+      });
+
+      isInitialized = true;
+
+      if (authenticated) {
+        console.log('User authenticated successfully');
+        console.log('User roles:', getUserRoles());
+        console.log('Token parsed:', keycloak.tokenParsed);
+      }
+
+      return authenticated;
+    } catch (error) {
+      console.error('Keycloak initialization failed:', error);
+      isInitialized = false;
+      initPromise = null;
+      return false;
+    }
+  })();
+
+  return initPromise;
 };
 
 /**
